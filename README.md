@@ -14,3 +14,12 @@ create table "students" (
   "class" INT not null
 )
 ```
+
+HTTP Methods:
+
+* GET all students;
+* GET student by ID;
+* POST student;
+* PUT (update whole) student;
+* PATCH (update single filed) student;
+* DELETE student.
