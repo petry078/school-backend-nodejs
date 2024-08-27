@@ -1,11 +1,14 @@
 import express from 'express';
 import { PrismaClient } from '@prisma/client';
+import swaggerUI from 'swagger-ui-express';
+import swaggerDocument from './swagger.json' with { type: "json" };
 
 const app = express()
 const prisma = new PrismaClient()
 const PORT = 3000
 
 app.use(express.json())
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 //GET all students
 app.get('/', async (req, res) => {
@@ -47,7 +50,7 @@ app.post('/', async (req, res) => {
     });
     return res.status(200).json(postStudent);
   } catch (error) {
-    res.status(500).send("Error creating student.");
+    res.send(error);
   }
 });
 
@@ -107,6 +110,7 @@ app.delete('/:id', async (req, res) => {
     res.status(500).send(`Error deleting student ${id}.`);
   }
 });
+
 //Server start log
 app.listen(PORT, () => {
     console.log(`App runing on http://localhost:${PORT}/`)

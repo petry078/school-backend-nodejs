@@ -1,0 +1,19 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "School Backend Node.js",
+        "description": "API to manage id, name, age, scores, teacher, and class, assigned to each student in a database.",
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/": {
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    
+}

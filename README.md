@@ -6,7 +6,7 @@ Live: __
 
 Made with:
 
-* `JavaScript & Node.js` -> Programming language;
+* `JavaScript & Node.js` -> Programming;
 * `Express.js` -> Server framework;
 * `Prisma Client` -> ORM; 
 * `Neon DB & PostgreSQl` -> Database solution.
