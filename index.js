@@ -42,17 +42,15 @@ app.post('/', async (req, res) => {
 //PUT student
 app.put('/:id', async (req, res) => {
     const id = req.params.id
-    const { name, age, n1, n2, teacher, class:grade } = req.body
-   
     const student = await prisma.student.update({
       where: { id: Number(id) },
       data: {
-        name,
-        age,
-        n1,
-        n2,
-        teacher,
-        class:grade
+        name: req.body.name,
+        age: req.body.age,
+        n1: req.body.n1,
+        n2: req.body.n2,
+        teacher: req.body.teacher,
+        class: req.body.class
       }
     })
   
@@ -62,20 +60,18 @@ app.put('/:id', async (req, res) => {
 //PATCH student
 app.patch('/:id', async (req, res) => {
     const id = req.params.id
-    const { name, age, n1, n2, teacher, class:grade } = req.body
-   
     const student = await prisma.student.update({
       where: { id: Number(id) },
       data: {
-        name,
-        age,
-        n1,
-        n2,
-        teacher,
-        class:grade
+        name: req.body.name,
+        age: req.body.age,
+        n1: req.body.n1,
+        n2: req.body.n2,
+        teacher: req.body.teacher,
+        class: req.body.class
       }
     })
-  
+
     return res.json(student)
   })
 
@@ -88,9 +84,9 @@ app.delete('/:id', async (req, res) => {
         id: Number(id),
       },
     });
-    res.status(200).send("Student deleted.");
+    res.status(200).send("Student ${id} deleted.");
   } catch (error) {
-    res.status(500).send("Error deleting student.");
+    res.status(500).send("Error deleting student ${id}.");
   }
 });
 
