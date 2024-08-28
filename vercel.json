@@ -9,8 +9,13 @@
     ],
     "routes": [
       {
+        "src": "/(.*).(js|css|png|jpg|ico|svg|json)",
+        "headers": { "cache-control": "s-maxage=31536000,immutable" },
+        "dest": "/$1.$2"
+      },
+      {
         "src": "/(.*)",
         "dest": "./index.js"
       }
     ]
-  }
+}
