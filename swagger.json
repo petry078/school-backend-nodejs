@@ -1,19 +1,170 @@
 {
-    "openapi": "3.0.1",
+    "openapi": "3.0.0",
     "info": {
-        "title": "School Backend Node.js",
-        "description": "API to manage id, name, age, scores, teacher, and class, assigned to each student in a database.",
-        "version": "1.0.0"
+      "version": "1.0.0",
+      "title": "School Backend Node.js",
+      "description": "API to manage students in a database"
     },
-    "basePath": "/",
+    "servers": [
+      {
+        "url": "http://localhost:3000"
+      }
+    ],
     "paths": {
-        "/": {
-                "responses": {
-                    "200": {
-                        "description": "OK"
+      "/": {
+        "get": {
+          "summary": "GET All - List all students data",
+          "responses": {
+            "200": {
+              "description": "A list of students",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Student"
                     }
+                  }
                 }
+              }
             }
+          }
+        },
+        "post": {
+          "summary": "POST - Create a new student",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Student created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            }
+          }
         }
-    
-}
+      },
+      "/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Student ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "get": {
+          "summary": "GET by ID - List student data from its ID",
+          "responses": {
+            "200": {
+              "description": "A student",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "PUT - Update all fields from student data",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Student updated",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "summary": "PATCH - Partially update a student",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Student updated",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "DELETE - Delete student data",
+          "responses": {
+            "200": {
+              "description": "Student data deleted"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Student": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "age": {
+              "type": "integer"
+            },
+            "n1": {
+              "type": "integer"
+            },
+            "n2": {
+              "type": "integer"
+            },
+            "teacher": {
+              "type": "string"
+            },
+            "class": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }

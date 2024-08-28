@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "School Backend Node.js",
+        "description": "API to manage id, name, age, scores, teacher, and class, assigned to each student in a database. More information: https://github.com/petry078/shcool-backend-nodejs",
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/": {
+            "get": {
+                "description": "GET All - Returns all students registered in the database.",
+                "responses": {
+                    "200": { "description": "Sucess!" },
+                    "404": { "description": "Not Found!" },
+                    "500": { "description": "Internal Server Error!" },
+                    "503": { "description": "Service Unavailable!" },
+                    "504": { "description": "Gateway Timeout!" }
+                }
+            },
+            "post": {
+                "description": "Register a new student in the database.",
+                "responses": {
+                    "201": { "description": "Created!" },
+                    "400": { "description": "Bad Request!" },
+                    "500": { "description": "Internal Server Error!" },
+                    "503": { "description": "Service Unavailable!" },
+                    "504": { "description": "Gateway Timeout!" }
+                }
+            }
+        }
+    }    
+}
